@@ -9,6 +9,9 @@ const HomeScreen = () => {
     const handleLogin = () => {
         navigation.navigate("LOGIN");
     };
+    const handleSignup = () => {
+        navigation.navigate("SIGNUP");
+    };
   return (
     <View style={styles.container}>
         <Image source={require("../assets/logo.png")} style={styles.logo}/>
@@ -19,7 +22,7 @@ const HomeScreen = () => {
             <TouchableOpacity style={[styles.loginButtonWrapper, {backgroundColor: colors.primary}, ]} onPress={handleLogin}>
                 <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.loginButtonWrapper]}>
+            <TouchableOpacity style={[styles.loginButtonWrapper]} onPress={handleSignup}>
                 <Text style={styles.signUpButtonText}>Sign Up</Text>
             </TouchableOpacity>
         </View>

@@ -5,14 +5,15 @@ import { useNavigation } from '@react-navigation/native'
 import { colors } from '../utils/colors'
 import { fonts } from '../utils/fonts'
 
-const LoginScreen = () => {
+const SignupScreen = () => {
   const navigation = useNavigation();
   const [secureEntry, setSecureEntry] = useState(true);
   const handleBackButton = () => {
     navigation.navigate("HOME")
   };
-  const handleSignup = () => {
-    navigation.navigate("SIGNUP");
+
+  const handleLogin = () => {
+    navigation.navigate("LOGIN");
   }
 
   return (
@@ -21,37 +22,37 @@ const LoginScreen = () => {
         <Ionicons name={"arrow-back-outline"} color={colors.primary} size={25}/>
       </TouchableOpacity>
       <View style={styles.textContainer}>
-        <Text style={styles.textHeading}>Hey,</Text>
-        <Text style={styles.textHeading}>Welcome</Text>
-        <Text style={styles.textHeading}>Back</Text>
+        <Text style={styles.textHeading}>Let's get</Text>
+        <Text style={styles.textHeading}>Started</Text>
       </View>
       <View style={styles.formContainer}>
         <View style={styles.inputContainer}>
           <Ionicons name={"mail-outline"} size={20} color={colors.secondary}/>
-          <TextInput style={styles.textInput} placeholder='Enter your email' placeholderTextColor={colors.primary} keyboardType='email-address'/>
+          <TextInput style={styles.textInput} placeholder='Enter your email' placeholderTextColor={colors.secondary} keyboardType='email-address'/>
+        </View>
+        <View style={styles.inputContainer}>
+          <Ionicons name={"phone-portrait-outline"} size={20} color={colors.secondary}/>
+          <TextInput style={styles.textInput} placeholder='Enter your phone no' placeholderTextColor={colors.secondary} keyboardType='phone-pad'/>
         </View>
         <View style={styles.inputContainer}>
           <Ionicons name={"lock-closed-outline"} size={20} color={colors.secondary}/>
-          <TextInput style={styles.textInput} placeholder='Enter your password' placeholderTextColor={colors.primary} secureTextEntry={secureEntry}/>
+          <TextInput style={styles.textInput} placeholder='Enter your password' placeholderTextColor={colors.secondary} secureTextEntry={secureEntry}/>
           <TouchableOpacity onPress={() => setSecureEntry((prev) => !prev)}>
             <Ionicons name={"eye-outline"} size={20} color={colors.secondary} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.loginButtonWrapper}>
-          <Text style={styles.loginText}>Login</Text>
+        <TouchableOpacity style={styles.signupButtonWrapper}>
+          <Text style={styles.loginText}>Sign up</Text>
         </TouchableOpacity>
         <Text style={styles.continueText}>or continue with</Text>
-        <TouchableOpacity style={styles.loginWithGoogleWrapper}>
+        <TouchableOpacity style={styles.signupGoogleWrapper}>
           <Image source={require("../assets/Google.png")} style={styles.googleLogo}/>
           <Text style={styles.googleText}>Google</Text>
         </TouchableOpacity>
         <View style={styles.footerText}>
-          <Text style={styles.accountText}>Don't have an account?</Text>
-          <TouchableOpacity onPress={handleSignup}>
-            <Text style={styles.signupText}>Sign up</Text>
+          <Text style={styles.accountText}>Already have an account?</Text>
+          <TouchableOpacity onPress={handleLogin}>
+            <Text style={styles.signupText}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -59,7 +60,7 @@ const LoginScreen = () => {
   )
 }
 
-export default LoginScreen
+export default SignupScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -101,13 +102,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontFamily: fonts.Light,
   },
-  forgotPasswordText: {
-    fontFamily: fonts.SemiBold,
-    textAlign: "right",
-    color: colors.primary,
-    marginVertical: 10,
-  },
-  loginButtonWrapper: {
+  signupButtonWrapper: {
     backgroundColor: colors.primary,
     borderRadius: 100,
     marginTop: 20,
@@ -127,7 +122,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Regular,
     color: colors.primary,
   },
-  loginWithGoogleWrapper: {
+  signupGoogleWrapper: {
     borderWidth: 2,
     borderRadius: 100,
     flexDirection: "row",
